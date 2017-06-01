@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, g, jsonify, Response
 app = Flask(__name__)
 app.config.from_object(__name__)
 
-DATABASE = '/Users/waihamyee/Documents/Project/SODA Python Example/vehicle.db'
+DATABASE = 'vehicle.db'
 
 
 @app.route("/")
