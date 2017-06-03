@@ -9,11 +9,24 @@ raw_data = pd.DataFrame()
 offset = 0
 limit = 10000
 
-raw_data =  ("https://data.cityofnewyork.us/resource/qiz3-axqb.json?" + 
+query =  ("https://data.cityofnewyork.us/resource/qiz3-axqb.json?" + 
           "$where=borough=%22BROOKLYN%22" +
           "&$order=date%20DESC" +
           "&$limit=" + str(limit) + 
           "&$offset=" + str(offset))
+
+raw_data = pd.read_json(query)
+
+# while(not pd.read_json(query).empty):
+#     data = pd.read_json(query)
+#     print("Obtaining Data from ") + str(offset) + " to " + str(offset + limit)
+#     raw_data = raw_data.append(data)
+#     offset = offset + 50000
+#     query =  ("https://data.cityofnewyork.us/resource/qiz3-axqb.json?" + 
+#               "$where=borough=%22BROOKLYN%22" +
+#               "&$order=date%20DESC" +
+#               "&$limit=" + str(limit) + 
+#               "&$offset=" + str(offset))
 
 ## Drop location column
 raw_data = raw_data.drop('location', axis=1)
